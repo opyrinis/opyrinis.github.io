@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <style>
+        div.padded {
+            padding-top: 0px;
+            padding-right: 100px;
+            padding-bottom: 0.25in;
+            padding-left: 100px;
+        }
+
+        h1 {
+            font-size: 48px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        h3 {
+            font-size: 25px;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        li {
+            font-size: 20px;
+            line-height: 2;
+        }
+
+        body {
+            background-color: black;
+            color: rgb(228, 228, 228);
+            margin: auto 5%;
+        }
+
+        .navigationBar {
+            width: 100%;
+            background-color: rgb(27, 27, 27);
+            overflow: auto;
+        }
+
+        .navigationBar a {
+            float: left;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            color: rgb(228, 228, 228);
+            text-decoration: none;
+            font-size: 24px;
+            width: 25%;
+            text-align: center;
+            transition-duration: 0.4s;
+        }
+
+        .navigationBar a:hover {
+            background-color: rgb(110, 110, 110);
+        }
+
+        .navigationBar a.active {
+            background-color: rgb(65, 65, 65);
+        }
+
+        .pageContents {
+            margin: auto 10%;
+        }
+    </style>
+    <title>Real-Time Fluid Simulation | CS 184</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+
+<body>
+    <br />
+    <h1 align="middle">Real-Time 2D Fluid Simulation</h1>
+    <h2 align="middle">Noah Kingdon, Odysseus Pyrinis, Nikhil Jain, Alyssa Lo</h2>
+
+    <br />
+    <br />
+
+    <div class="navigationBar">
+        <a href="index.html">Home</a>
+        <a class="active" href="proposal.html">Proposal</a>
+        <a href="milestone.html">Milestone Report</a>
+        <a href="final.html">Final Report</a>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="pageContents">
+        <h3 align="left">Project Summary</h3>
+
+        <p>
+            This project is a 2D Grid Based Fluid Dynamics Simulation. Features include a pressure map, velocity map,
+            and
+            interactions through adding velocity and colors. Some optional tasks will be to implement a viscosity
+            slider, a
+            density map, and simulate gravity.
+        </p>
+
+        <br />
+
+        <h3 align="left">Problem Description</h3>
+
+        <p>
+            Fluids are all around us, as the water we drink and as the oil in our cars. People have long studied the
+            dynamics of fluids around us, and one way to study them is through visualization. For this project, we have
+            decided to create a 2D fluid simulation. Simulations, or visualizations in general, allow people to
+            understand
+            the object being visualized better while being interesting and aesthetically pleasing.
+        </p>
+
+        <p>
+            In this project, we want to simulate the motion of 2D fluid over time, with changing velocity and pressure.
+            We
+            plan to illustrate changes in velocity, pressure, and color, then add some more features as time permits.
+            The
+            challenges in this project will be how to approximate solutions to differential equations in discrete time
+            and
+            visualize them in real time.
+        </p>
+
+        <br />
+
+        <h3 align="left">Goals and Deliverables (What we <i>Plan</i> to Deliver)</h3>
+
+        <p>
+            We plan to have an application that simulates real time Fluid Dynamics in 2D. As a baseline, we plan to have
+            a
+            UI that can toggle between a pressure and velocity map of a simulated fluid. The fluid will have some
+            initial
+            velocity for every pixel that the user can set. We also want the user to be able to drop multiple colors of
+            dye
+            on a pixel or group of pixels into the simulation to watch them dissipate as they are affected by the
+            velocities. We plan to check the quality of our simulation visually through the maps, as well as making sure
+            it
+            is updating at 30 fps (real time).
+        </p>
+
+        <p>
+            To implement the fluid dynamics simulation, we will be utilizing a 2D velocity field grid which, for each
+            pixel,
+            the velocity vector of the fluid will be updated for each predetermined, small time step. In order to
+            calculate
+            the new velocity vectors for each pixel in the field map, we will be employing the Helmholtz-Hodge
+            Decomposition
+            of the Navier-Stokes equations which take into consideration fluid properties such as: the pressure map from
+            the
+            previous time step, the velocity map from the previous time step, and the viscosity of the fluid.
+        </p>
+
+        <p>
+            Some question we plan to answer in the analysis are:
+        <ul>
+            <li>How do initial conditions affect how the simulation evolves with time?</li>
+            <li>How does pressure affect the movement of the fluids?</li>
+            <li>How does pressure affect velocity, and how does velocity affect pressure?</li>
+            <li>How do the different colors mix together with different initial conditions?</li>
+            <li>How does varying the properties of the fluids (viscosity, density, etc) affect the simulation?</li>
+        </ul>
+        </p>
+
+        <br />
+
+        <h3 align="left">Goals and Deliverables (What we <i>Hope</i> to Deliver)</h3>
+
+        <p>
+            If we are able to complete the baseline tasks ahead of time, we plan to add other parameters to the
+            simulation, like gravity, viscosity, and compressibility. If we are feeling the challenge, we can also add a
+            temperature map to show how viscosity and gravity would affect temperature.
+        </p>
+
+        <p>
+            Other stretch goals:
+        <ul>
+            <li>Allow the browser window to be moved, such that the movement will affect the fluids inside.</li>
+            <li>Add compressible fluids and show a density and temperature map of the simulated fluids.</li>
+            <li>Simulate multiple fluids simultaneously and observe their interactions with one another.</li>
+        </ul>
+        </p>
+
+        <br />
+
+        <h3 align="left">Schedule</h3>
+
+        <p><b><i>Week 1 (Getting Familiar with UI!)</i></b></p>
+        <ul>
+            <li>Get familiar with ThreeJS + background</li>
+            <li>Ask TA for 2D UI package</li>
+            <li>Have the UI render on the browser and render something easy to make sure the system works.</li>
+            <li>Familiarize ourselves with the concepts introduced in Chapter 38 of the GPU Gems source which explains
+                the math behind implementing fast fluid dynamic simulations.</li>
+        </ul>
+
+        <p><b><i>Week 2 (Actual Physics Code Week!)</i></b></p>
+        <ul>
+            <li>Understand the Physics</li>
+            <li>Come up with Pseudocode</li>
+            <li>Coding the Physics part :)</li>
+        </ul>
+
+        <p><b><i>Week 3 (Actually Using UI Week!)</i></b></p>
+        <ul>
+            <li>Implement Velocity Map</li>
+            <li style="color:red">Due Date:</li>
+            <ul>
+                <li><i>Milestone: Tuesday, April 27th, 11:59pm.</i></li>
+            </ul>
+        </ul>
+
+        <p><b><i>Week 4 (Using the UI Continued!)</i></b></p>
+        <ul>
+            <li>Pressure + Color Map</li>
+            <li><i style="color: aqua;">(Optional)</i> Temperature Map and Viscosity Slider</li>
+            <li><i style="color: aqua;">(Optional)</i> Gravity (adding black hole)</li>
+            <li><i style="color: aqua;">(Optional)</i> Compressibility (density map)</li>
+            <li><i style="color: aqua;">(Optional)</i> All other Stretch Goals</li>
+            <li style="color: red;">Due Date:</li>
+            <ul>
+                <li><i>Final Presentations: Thursday, May 6th</i></li>
+            </ul>
+        </ul>
+
+        <p><b><i>Week 5 (Presentation!)</i></b></p>
+        <ul>
+            <li>Create webpage + video</li>
+            <li style="color:red">Due Date:</li>
+            <ul>
+                <li><i>Final Deliverables: Tuesday, May 11th, 11:59pm.</i></li>
+            </ul>
+        </ul>
+
+        <br />
+
+        <h3 align="left">Resources</h3>
+
+        <p>
+            The computing platform and hardware resources we plan to use are our personal computers. Since we plan to
+            render this in real-time, we want to test and develop our scenes on the same devices that will be used to
+            view the final results.
+        </p>
+
+        <p>
+            For software resources, we are planning to use <a href="https://threejs.org" style="color:aqua">ThreeJS</a>
+            as a starting point for our
+            project. ThreeJS will give us the ability to render scenes. However, we will also ask the course staff for
+            other possible scene renderers and starting points. One important criteria is that we want to use something
+            lightweight, as we will be rendering scenes in real-time.
+        </p>
+
+        <p>
+            We will refer to these readings:
+        </p>
+
+        <ul>
+            <li><a href="http://developer.download.nvidia.com/books/HTML/gpugems/gpugems_ch38.html"
+                    style="color:aqua">NVidia GPU Gems (Fast Fluid Dynamics Simulation)</a></li>
+            <li><a href="https://developer.nvidia.com/gpugems/gpugems3/part-v-physics-simulation/chapter-30-real-time-simulation-and-rendering-3d-fluids"
+                    style="color:aqua">NVidia GPU Gems (Real-Time Simulation and Rendering of 3D Fluids)</a></li>
+            <li><a href="https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene"
+                    style="color:aqua">ThreeJS Documentation</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Navier-Stokes_equations" style="color:aqua">Navier-Stokes Eqns
+                    for Fluid Dynamics</a></li>
+            <li><a href="https://gamedevelopment.tutsplus.com/tutorials/how-to-write-a-smoke-shader--cms-25587"
+                    style="color:aqua">How to Write a Smoke Shader</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

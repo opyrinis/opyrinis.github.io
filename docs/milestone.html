@@ -70,7 +70,7 @@
         }
 
         .container {
-            color:rgb(228, 228, 228);
+            color: rgb(228, 228, 228);
             margin: 0 auto;
             text-align: center;
         }
@@ -97,9 +97,9 @@
             text-align: center;
         }
 
-        button {            
-            background-color:inherit;
-            color:rgb(228, 228, 228);
+        button {
+            background-color: inherit;
+            color: rgb(228, 228, 228);
             font-size: 32px;
             padding: 24px;
             border-radius: 8px;
@@ -108,7 +108,7 @@
         }
 
         button:hover {
-            background-color:rgb(110, 110, 110);
+            background-color: rgb(110, 110, 110);
         }
     </style>
     <title>Real-Time Fluid Simulation | CS 184</title>
@@ -125,7 +125,7 @@
             hour = minute * 60,
             day = hour * 24;
 
-        let deadline = "May 11, 2021 23:59:59",
+        let deadline = "April 27, 2021 23:59:59",
             countDown = new Date(deadline).getTime(),
             x = setInterval(function () {
                 let now = new Date().getTime(),
@@ -167,9 +167,9 @@
     <br />
 
     <div class="navigationBar">
-        <a class="active" href="index.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="proposal.html">Proposal</a>
-        <a href="milestone.html">Milestone Report</a>
+        <a class="active" href="milestone.html">Milestone Report</a>
         <a href="final.html">Final Report</a>
     </div>
 
@@ -177,7 +177,7 @@
     <br />
 
     <div class="container">
-        <h1 id="headline">Countdown to Project Completion</h1>
+        <h1 id="headline">Countdown to Milestone Completion</h1>
         <div id="countdown">
             <ul>
                 <li><span id="days"></span>Days</li>
