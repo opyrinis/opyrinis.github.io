@@ -69,34 +69,6 @@
             margin: auto 10%;
         }
 
-        .container {
-            color: rgb(228, 228, 228);
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .container h1 {
-            font-weight: normal;
-            text-transform: uppercase;
-        }
-
-        .container li {
-            display: inline-block;
-            font-size: 24px;
-            list-style-type: none;
-            padding: 20px;
-            text-transform: uppercase;
-        }
-
-        .container li span {
-            display: block;
-            font-size: 48px;
-        }
-
-        .ProposalButton {
-            text-align: center;
-        }
-
         button {
             background-color: inherit;
             color: rgb(228, 228, 228);
@@ -116,48 +88,6 @@
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
 
-<script>
-    // Code for countdown timer from w3schoolweb:
-    //https://w3schoolweb.com/how-to-make-a-countdown-timer-in-html-code/
-    (function () {
-        const second = 1000,
-            minute = second * 60,
-            hour = minute * 60,
-            day = hour * 24;
-
-        let deadline = "April 27, 2021 23:59:59",
-            countDown = new Date(deadline).getTime(),
-            x = setInterval(function () {
-                let now = new Date().getTime(),
-                    distance = countDown - now;
-
-                (document.getElementById("days").innerText = Math.floor(distance / day)),
-                    (document.getElementById("hours").innerText = Math.floor(
-                        (distance % day) / hour
-                    )),
-                    (document.getElementById("minutes").innerText = Math.floor(
-                        (distance % hour) / minute
-                    )),
-                    (document.getElementById("seconds").innerText = Math.floor(
-                        (distance % minute) / second
-                    ));
-
-                //do something later when date is reached
-                if (distance < 0) {
-                    let headline = document.getElementById("headline"),
-                        countdown = document.getElementById("countdown"),
-                        content = document.getElementById("content");
-
-                    headline.innerText = "We better be done!";
-                    countdown.style.display = "none";
-
-                    clearInterval(x);
-                }
-                //seconds
-            }, 0);
-    })();
-</script>
-
 <body>
     <br />
     <h1 align="middle">Real-Time 2D Fluid Simulation</h1>
@@ -176,22 +106,97 @@
     <br />
     <br />
 
-    <div class="container">
-        <h1 id="headline">Countdown to Milestone Completion</h1>
-        <div id="countdown">
-            <ul>
-                <li><span id="days"></span>Days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-            </ul>
+    <div class="pageContents">
+        <h3 align="left">Summary of Accomplishments (Progress so Far)</h3>
+        <p>
+            Our two main accomplishments thus far for the milestone checkpoint have been better understanding the
+            mechanics of WebGL and interfacing dat.GUI as our graphical user interface with which the user can change
+            different parameters of the simulation. With respect to learning and implementing graphics simulations using
+            WebGL, we have thus far accomplished the following:
+        </p>
+
+        <ul>
+            <li>Learned how to define our vertex and shader programs</li>
+            <li>Successfully compiled the vertex and fragment shader programs after the webpage loads (which provides
+                time for the GUI to initialize from which our default parameters will be initialized for the simulation)
+            </li>
+            <li>Learned how to create, bind, and transfer the particle buffer data which holds position and velocity
+                information for each particle from the CPU memory to the GPU to be processed by the vertex and fragment
+                shaders</li>
+            <li>Implemented canvas bounding so that when a particle hits the boundary of a canvas, its velocity is
+                altered as if it interacted with the boundary of the canvas</li>
+            <li>Using the coordinate system of WebGL (both axes ranging from -1 to 1 with 0 in the center of the canvas)
+                we also wrote a mouse-click capture function which automatically converts the coordinates of the mouse
+                click into coordinates understood by WebGL which will be used later on for user-interaction of the
+                simulation</li>
+            <li>In its current state, our simulation webpage successfully uses WebGL to render particles which are
+                simulated with randomized initial locations and velocities and with the acceleration of gravity acting
+                on them (they also bounce off of the bottom of the canvas and slowly lose energy after each bounce) -
+                the physics will be changed later once we begin implementing the navier-stokes equations but we wanted
+                to first get a basic physics simulation working before implementing more complex physics</li>
+            <li>We have included a video of the very simple particle simulation showing the GUI interface and WebGL
+                canvas rendering correctly</li>
+        </ul>
+
+        <p><a href="https://docs.google.com/presentation/d/1PtrsXvnzaKosVqaaBoG5dHmHvNkUeflps7j4Vh_RLcE/edit?usp=sharing"
+                    style="color:aqua">View our presentation slides by clicking this link.</a></p>
+
+        <br />
+
+        <h3 align="left">Preliminary Results</h3>
+
+        <div align="center">
+            <iframe width="700" height="455" src="https://www.youtube-nocookie.com/embed/FfhOb_T49WI"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
-    </div>
 
-    <br />
-    <br />
+        <p>
+            Here we can see that we have 200,000 particles moving around in our simulation. We colored them green for
+            visibility and we made the particles bounce back into the screen if they moved past the boundary of the
+            canvas. In this particular demo, we added a gravity parameter which affected the velocity vectors for each
+            particle every delta t time steps, as well as dampening every time the particle bounced back up from the
+            bottom of the canvas so the system would slowly lose energy. There is aliasing in the video since it was
+            screen captured at 30fps while the particles were being rendered in excess of 60fps.
+        </p>
 
-    <div class="ProposalButton">
-        <button type="button" onclick="location.href='proposal.html'">View Our Proposal</button>
+        <p>
+            Additionally, we have split the code up into multiple files: UI, simulation code, and webpage code which can
+            be accessed through the following links. Since the code files are in our private repo, the the links may not
+            work for you
+        </p>
+
+        <ul>
+            <li><a href="https://github.com/opyrinis/2D-fluid-simulation-code/blob/main/demo2.js"
+                    style="color:aqua">Simulation JavaScript</a></li>
+            <li><a href="https://github.com/opyrinis/2D-fluid-simulation-code/blob/main/example.html"
+                    style="color:aqua">Simulation Webpage</a></li>
+            <li><a href="https://github.com/opyrinis/2D-fluid-simulation-code/blob/main/gui_init.js"
+                    style="color:aqua">Simulation GUI JavaScript</a></li>
+        </ul>
+
+        <p>
+            We plan to create a new shader for each map we create (velocity, pressure, etc). For now, we have a particle
+            shader, so that the user can see the particles as they move. In addition to our current simulation code, we
+            have also set up the mouse clicking UI for future use.
+        </p>
+
+
+        <br />
+        <h3 align="left">Reflection</h3>
+        <p>
+            Our progress is on track with our initial timeline. We added the UI for adjusting physics parameters, and
+            experimented with WebGL to create a particle simulation. We also spent some time reading physics and WebGL
+            resources. Going forward, we can build on top of our initial particle simulation by improving the physics to
+            accurately model fluids. This would require writing more shaders for different physical phenomena
+            (advection, diffusion, and so on) and including them in our simulation pipeline. In conclusion, we have made
+            good progress and have a plan on how to move forward as well.
+        </p>
+
+        <br />
+        <br />
+        <br />
+        <br />
     </div>
 </body>
