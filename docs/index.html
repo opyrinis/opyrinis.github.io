@@ -69,37 +69,9 @@
             margin: auto 10%;
         }
 
-        .container {
-            color:rgb(228, 228, 228);
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .container h1 {
-            font-weight: normal;
-            text-transform: uppercase;
-        }
-
-        .container li {
-            display: inline-block;
-            font-size: 24px;
-            list-style-type: none;
-            padding: 20px;
-            text-transform: uppercase;
-        }
-
-        .container li span {
-            display: block;
-            font-size: 48px;
-        }
-
-        .ProposalButton {
-            text-align: center;
-        }
-
-        button {            
-            background-color:inherit;
-            color:rgb(228, 228, 228);
+        button {
+            background-color: inherit;
+            color: rgb(228, 228, 228);
             font-size: 32px;
             padding: 24px;
             border-radius: 8px;
@@ -108,55 +80,17 @@
         }
 
         button:hover {
-            background-color:rgb(110, 110, 110);
+            background-color: rgb(110, 110, 110);
+        }
+
+        .img {
+            fill: aliceblue;
         }
     </style>
     <title>Real-Time Fluid Simulation | CS 184</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
-
-<script>
-    // Code for countdown timer from w3schoolweb:
-    //https://w3schoolweb.com/how-to-make-a-countdown-timer-in-html-code/
-    (function () {
-        const second = 1000,
-            minute = second * 60,
-            hour = minute * 60,
-            day = hour * 24;
-
-        let deadline = "May 11, 2021 23:59:59",
-            countDown = new Date(deadline).getTime(),
-            x = setInterval(function () {
-                let now = new Date().getTime(),
-                    distance = countDown - now;
-
-                (document.getElementById("days").innerText = Math.floor(distance / day)),
-                    (document.getElementById("hours").innerText = Math.floor(
-                        (distance % day) / hour
-                    )),
-                    (document.getElementById("minutes").innerText = Math.floor(
-                        (distance % hour) / minute
-                    )),
-                    (document.getElementById("seconds").innerText = Math.floor(
-                        (distance % minute) / second
-                    ));
-
-                //do something later when date is reached
-                if (distance < 0) {
-                    let headline = document.getElementById("headline"),
-                        countdown = document.getElementById("countdown"),
-                        content = document.getElementById("content");
-
-                    headline.innerText = "We better be done!";
-                    countdown.style.display = "none";
-
-                    clearInterval(x);
-                }
-                //seconds
-            }, 0);
-    })();
-</script>
 
 <body>
     <br />
@@ -175,23 +109,49 @@
 
     <br />
     <br />
+    <div class="pageContents">
+        <h1><u>Abstract</u></h1>
+        <p>
+            Our project consisted of generating a 2D-Fluid simulation which was rendered in real-time inside of
+            a
+            browser window. To accomplish this project, we utilized WebGL, which is supported by most modern
+            browsers,
+            and implemented the Navier-Stokes equations for non-compressible fluids as shader programs so that
+            the
+            calculations for the fluid simulation were performed entirely on the GPU. Our implementation
+            initializes the
+            rendering canvas of the browser window with a 2D velocity map and 2D dye map which are stored in
+            textures on
+            the GPU and modified accordingly to render the fluid behavior at each time step onto the visible
+            canvas. The
+            velocity map is used to advect the dye map, producing the colored fluid results in the browser
+            window, and
+            separate fragment shader programs are used to update the velocity map for each time step, simulating
+            the
+            behavior of non-compressible fluids.
+        </p>
 
-    <div class="container">
-        <h1 id="headline">Countdown to Project Completion</h1>
-        <div id="countdown">
-            <ul>
-                <li><span id="days"></span>Days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-            </ul>
+        <br>
+        <br>
+
+        <div align="center">
+            <iframe width="860" height="615" src="https://www.youtube-nocookie.com/embed/iAeZpt0hQQc"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
         </div>
-    </div>
 
-    <br />
-    <br />
+        <br>
+        <br>
 
-    <div class="ProposalButton">
-        <button type="button" onclick="location.href='proposal.html'">View Our Proposal</button>
+        <div align="center" class="FinalReportButton">
+            <button type="button" onclick="location.href='final.html'">View Our Final Report</button>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </body>
